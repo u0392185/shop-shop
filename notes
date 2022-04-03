@@ -1,0 +1,26 @@
+
+
+
+Redux, as we'll soon see:
+
+    Single source of truth
+    State is read-only
+    State is changed through pure functions
+
+
+
+The name for a global state object is often referred to as a store.
+
+As we learned earlier, a global store is built on two important pieces when it comes to updating state:
+
+    Actions: These define the types of events that can be emitted to update state. State can only be updated if it's a predefined action.
+    Reducers: The actual functionality that carries out the emitted action to update state.
+
+
+The Provider is a special type of React component that we wrap our application in so it can make the state data that's passed into it as a prop available to all other components. The Consumer is our means of grabbing and using the data that the Provider holds for us.
+
+
+The second argument in useEffect is known as the dependency array.
+    [products, data, dispatch, id])
+
+    
