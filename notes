@@ -23,4 +23,12 @@ The Provider is a special type of React component that we wrap our application i
 The second argument in useEffect is known as the dependency array.
     [products, data, dispatch, id])
 
-    
+
+Used the React Context API to implement a Redux-like store.
+Wrote Redux-like actions and reducers with the necessary tests in place.
+
+
+You should always wrap emojis (like the shopping cart icon) in a <span> element that includes role and aria-label attributes. Doing so will help screen readers understand the context of the emoji.
+
+
+Don't ignore React's warning messages! Even though most of them won't prevent your app from running, they help enforce best practices and avoid bugs that might occur later on.
