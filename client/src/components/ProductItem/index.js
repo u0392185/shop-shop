@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { idbPromise } from "../../utils/helpers";
-import { pluralize } from "../../utils/helpers"
+import { idbPromise, pluralize } from "../../utils/helpers";
 
-import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
+// import { useStoreContext } from '../../utils/GlobalState';
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../actions';
+import { useSelector, useDispatch } from 'react-redux'
 
 function ProductItem(item) {
   const {
@@ -15,17 +15,19 @@ function ProductItem(item) {
     quantity
   } = item;
 
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
 
-  const { cart } = state;
+  const cart = useSelector((store) => store.cart)
+  const dispatch = useDispatch()
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
     if (itemInCart) {
+      let amountToAdd = parseInt(itemInCart.purchaseQuantity) + 1
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: amountToAdd
       });
       idbPromise('cart', 'put', {
         ...itemInCart,
